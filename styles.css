@@ -48,6 +48,776 @@
     --container-max-width: 1200px;
 }
 
+/* ===== CREATIVE CONSTRUCTION LOADING PAGE ===== */
+.welcome-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+
+.welcome-loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.construction-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* ===== BACKGROUND SKYLINE ===== */
+.skyline {
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    right: 0;
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    opacity: 0.3;
+}
+
+.building {
+    background: linear-gradient(145deg, #374151, #4b5563);
+    position: relative;
+    animation: buildingGlow 4s ease-in-out infinite alternate;
+}
+
+.building-1 {
+    width: 80px;
+    height: 200px;
+    animation-delay: 0s;
+}
+
+.building-2 {
+    width: 100px;
+    height: 250px;
+    animation-delay: 0.5s;
+}
+
+.building-3 {
+    width: 90px;
+    height: 180px;
+    animation-delay: 1s;
+}
+
+.building-4 {
+    width: 110px;
+    height: 220px;
+    animation-delay: 1.5s;
+}
+
+.building-5 {
+    width: 85px;
+    height: 190px;
+    animation-delay: 2s;
+}
+
+.building::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    right: 20%;
+    height: 60%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 15px,
+        rgba(255, 255, 255, 0.1) 15px,
+        rgba(255, 255, 255, 0.1) 18px
+    );
+}
+
+.building::after {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 15px;
+    background: var(--accent-color);
+    animation: windowBlink 2s ease-in-out infinite;
+}
+
+@keyframes buildingGlow {
+    0% { box-shadow: 0 0 20px rgba(214, 158, 46, 0.3); }
+    100% { box-shadow: 0 0 40px rgba(214, 158, 46, 0.6); }
+}
+
+@keyframes windowBlink {
+    0%, 50% { opacity: 1; }
+    25%, 75% { opacity: 0.3; }
+}
+
+/* ===== CONSTRUCTION CRANE ===== */
+.crane-container {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 300px;
+    height: 400px;
+}
+
+.crane {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.crane-base {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 60px;
+    background: linear-gradient(145deg, #fbbf24, #f59e0b);
+    border-radius: 4px;
+}
+
+.crane-mast {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 250px;
+    background: linear-gradient(180deg, #ef4444, #dc2626);
+    animation: craneSway 6s ease-in-out infinite;
+}
+
+.crane-jib {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 6px;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    transform-origin: left center;
+    animation: craneRotate 8s linear infinite;
+}
+
+.crane-counter-jib {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    width: 80px;
+    height: 6px;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    transform-origin: left center;
+    animation: craneRotate 8s linear infinite;
+}
+
+.crane-trolley {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    width: 12px;
+    height: 20px;
+    background: #fbbf24;
+    animation: trolleyMove 4s ease-in-out infinite alternate;
+}
+
+.crane-hook {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 30px;
+    background: #374151;
+}
+
+.building-block {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(145deg, #f97316, #ea580c);
+    border-radius: 2px;
+    animation: blockSwing 3s ease-in-out infinite;
+}
+
+@keyframes craneSway {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(2deg); }
+}
+
+@keyframes craneRotate {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes trolleyMove {
+    0% { right: 20px; }
+    100% { right: 150px; }
+}
+
+@keyframes blockSwing {
+    0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+    50% { transform: translateX(-50%) rotate(5deg); }
+}
+
+/* ===== CONSTRUCTION GROUND & WORKERS ===== */
+.construction-ground {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(180deg, #92400e, #78350f);
+    border-radius: 20px 20px 0 0;
+}
+
+.foundation {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 60%;
+    height: 40px;
+    background: linear-gradient(145deg, #6b7280, #4b5563);
+    animation: foundationBuild 5s ease-in-out infinite;
+}
+
+.construction-workers {
+    position: absolute;
+    bottom: 40px;
+    left: 30%;
+    width: 40%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.worker {
+    position: relative;
+    animation: workerMove 3s ease-in-out infinite alternate;
+}
+
+.worker-1 { animation-delay: 0s; }
+.worker-2 { animation-delay: 1.5s; }
+
+.worker-body {
+    width: 12px;
+    height: 30px;
+    background: linear-gradient(180deg, #2563eb, #1d4ed8);
+    border-radius: 6px;
+}
+
+.hard-hat {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 12px;
+    background: linear-gradient(145deg, #fbbf24, #f59e0b);
+    border-radius: 8px 8px 4px 4px;
+}
+
+@keyframes workerMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+}
+
+@keyframes foundationBuild {
+    0% { width: 20%; opacity: 0.5; }
+    50% { width: 60%; opacity: 1; }
+    100% { width: 60%; opacity: 1; }
+}
+
+/* ===== CONSTRUCTION EQUIPMENT ===== */
+.equipment {
+    position: absolute;
+    bottom: 50px;
+    right: 10%;
+    width: 100px;
+    height: 60px;
+}
+
+.excavator {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: excavatorWork 4s ease-in-out infinite;
+}
+
+.excavator-body {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    width: 40px;
+    height: 25px;
+    background: linear-gradient(145deg, #fbbf24, #f59e0b);
+    border-radius: 4px;
+}
+
+.excavator-arm {
+    position: absolute;
+    bottom: 35px;
+    left: 35px;
+    width: 30px;
+    height: 4px;
+    background: #374151;
+    transform-origin: left center;
+    animation: excavatorArmMove 2s ease-in-out infinite alternate;
+}
+
+.excavator-bucket {
+    position: absolute;
+    bottom: 30px;
+    left: 60px;
+    width: 12px;
+    height: 8px;
+    background: #6b7280;
+    border-radius: 0 0 4px 4px;
+}
+
+.excavator-tracks {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    width: 50px;
+    height: 15px;
+    background: #1f2937;
+    border-radius: 8px;
+}
+
+@keyframes excavatorWork {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes excavatorArmMove {
+    0% { transform: rotate(-10deg); }
+    100% { transform: rotate(20deg); }
+}
+
+/* ===== FLOATING CONSTRUCTION ELEMENTS ===== */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-element {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.blueprint {
+    top: 20%;
+    left: 10%;
+    background: linear-gradient(145deg, #3b82f6, #2563eb);
+    border-radius: 4px;
+}
+
+.blueprint::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.hammer {
+    top: 30%;
+    right: 15%;
+    background: linear-gradient(145deg, #92400e, #78350f);
+    border-radius: 0 0 50% 50%;
+    transform: rotate(45deg);
+}
+
+.helmet {
+    top: 15%;
+    right: 30%;
+    background: linear-gradient(145deg, #fbbf24, #f59e0b);
+    border-radius: 50% 50% 20% 20%;
+}
+
+.gear {
+    bottom: 30%;
+    left: 20%;
+    background: linear-gradient(145deg, #6b7280, #4b5563);
+    border-radius: 20%;
+    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+}
+
+.ruler {
+    bottom: 25%;
+    right: 25%;
+    background: linear-gradient(145deg, #ef4444, #dc2626);
+    border-radius: 4px;
+    transform: rotate(15deg);
+}
+
+.ruler::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 4px,
+        rgba(255, 255, 255, 0.3) 4px,
+        rgba(255, 255, 255, 0.3) 6px
+    );
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+/* ===== CONSTRUCTION PROGRESS BAR ===== */
+.construction-progress {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.progress-label {
+    color: var(--text-light);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    animation: progressPulse 2s ease-in-out infinite alternate;
+}
+
+.progress-container {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+}
+
+.progress-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+}
+
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, 
+        var(--accent-color) 0%,
+        #f59e0b 25%,
+        #fbbf24 50%,
+        #f59e0b 75%,
+        var(--accent-color) 100%
+    );
+    background-size: 200% 100%;
+    animation: progressShine 1.5s ease-in-out infinite;
+    transition: width 0.3s ease;
+}
+
+.progress-truck {
+    position: absolute;
+    top: -8px;
+    left: 0%;
+    width: 28px;
+    height: 28px;
+    transition: left 0.3s ease;
+}
+
+.truck-body {
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    width: 20px;
+    height: 12px;
+    background: linear-gradient(145deg, #ef4444, #dc2626);
+    border-radius: 2px;
+}
+
+.truck-wheels {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+}
+
+.wheel {
+    width: 8px;
+    height: 8px;
+    background: #1f2937;
+    border-radius: 50%;
+    animation: wheelRotate 0.5s linear infinite;
+}
+
+.progress-text {
+    color: var(--text-light);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+}
+
+@keyframes progressPulse {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+@keyframes progressShine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes wheelRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== COMPANY BRANDING ===== */
+.loader-branding {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.company-logo {
+    margin-bottom: var(--space-xl);
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+.logo-icon {
+    margin-bottom: var(--space-md);
+}
+
+.logo-icon i {
+    font-size: 4rem;
+    color: var(--accent-color);
+    animation: iconSpin 8s linear infinite;
+}
+
+.logo-text h1 {
+    color: var(--text-light);
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    margin-bottom: var(--space-xs);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text p {
+    color: var(--accent-color);
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.feature-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    opacity: 0.6;
+    transform: translateX(-20px);
+    transition: all 0.5s ease;
+}
+
+.highlight-item.active {
+    opacity: 1;
+    transform: translateX(0);
+    background: rgba(214, 158, 46, 0.2);
+    box-shadow: 0 0 20px rgba(214, 158, 46, 0.3);
+}
+
+.highlight-item i {
+    color: var(--accent-color);
+    font-size: var(--font-size-base);
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, -55%); }
+}
+
+@keyframes iconSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== PARTICLE EFFECTS ===== */
+.construction-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat var(--duration) ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.particle:nth-child(1) { left: 10%; }
+.particle:nth-child(2) { left: 25%; }
+.particle:nth-child(3) { left: 40%; }
+.particle:nth-child(4) { left: 60%; }
+.particle:nth-child(5) { left: 75%; }
+.particle:nth-child(6) { left: 90%; }
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(0);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(90vh) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(10vh) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .crane-container {
+        right: 5%;
+        width: 200px;
+        height: 300px;
+    }
+    
+    .crane-jib {
+        width: 150px;
+    }
+    
+    .crane-counter-jib {
+        width: 60px;
+    }
+    
+    .loader-branding {
+        padding: 0 var(--space-md);
+    }
+    
+    .logo-text h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .construction-progress {
+        width: 90%;
+    }
+    
+    .feature-highlights {
+        max-width: 300px;
+    }
+    
+    .highlight-item {
+        font-size: var(--font-size-xs);
+        padding: var(--space-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text h1 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .logo-icon i {
+        font-size: 3rem;
+    }
+    
+    .skyline {
+        height: 200px;
+    }
+    
+    .building {
+        width: 60px !important;
+        height: 120px !important;
+    }
+}
+
 body {
     font-family: var(--font-family);
     line-height: 1.6;

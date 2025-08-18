@@ -21,19 +21,176 @@ function initializeApp() {
     }, 500);
 }
 
-// ===== PRELOADER =====
-function initPreloader() {
-    const preloader = document.querySelector('.preloader');
+// ===== MAIN APPLICATION INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+});
+
+function initializeApp() {
+    // Initialize all components
+    initWelcomeLoader();
+    initNavigation();
+    initScrollEffects();
+    initAnimations();
+    initParallax();
+    initCounters();
+    initContactForm();
+    initScrollToTop();
+    initCursor();
     
-    window.addEventListener('load', function() {
-        setTimeout(() => {
-            preloader.classList.add('hide');
-            // Remove preloader from DOM after animation
+    // Start reveal animations after a short delay
+    setTimeout(() => {
+        revealElements();
+    }, 500);
+}
+
+// ===== CREATIVE WELCOME LOADER =====
+function initWelcomeLoader() {
+    const welcomeLoader = document.getElementById('welcome-loader');
+    const progressFill = document.getElementById('progress-fill');
+    const progressPercentage = document.getElementById('progress-percentage');
+    const highlightItems = document.querySelectorAll('.highlight-item');
+    const progressTruck = document.querySelector('.progress-truck');
+    
+    let progress = 0;
+    let currentHighlight = 0;
+    
+    // Progress animation
+    const progressInterval = setInterval(() => {
+        progress += Math.random() * 3 + 1; // Random increment between 1-4
+        
+        if (progress > 100) {
+            progress = 100;
+            clearInterval(progressInterval);
+            
+            // Complete loading after a short delay
             setTimeout(() => {
-                preloader.remove();
-            }, 600);
-        }, 1000);
-    });
+                completeLoading();
+            }, 800);
+        }
+        
+        // Update progress bar and percentage
+        progressFill.style.width = progress + '%';
+        progressPercentage.textContent = Math.floor(progress);
+        
+        // Move truck with progress
+        progressTruck.style.left = Math.min(progress, 95) + '%';
+        
+    }, 150);
+    
+    // Feature highlights rotation
+    const highlightInterval = setInterval(() => {
+        // Remove active class from current highlight
+        highlightItems[currentHighlight].classList.remove('active');
+        
+        // Move to next highlight
+        currentHighlight = (currentHighlight + 1) % highlightItems.length;
+        
+        // Add active class to new highlight
+        highlightItems[currentHighlight].classList.add('active');
+        
+        // Clear interval when loading is complete
+        if (progress >= 100) {
+            clearInterval(highlightInterval);
+        }
+    }, 1200);
+    
+    // Construction sound effects simulation (optional - can be removed if no audio)
+    function playConstructionSounds() {
+        // This is a placeholder for construction sound effects
+        // You can add actual audio files if desired
+        const sounds = ['crane', 'hammer', 'drilling', 'machinery'];
+        // Implementation would go here for audio playback
+    }
+    
+    function completeLoading() {
+        // Final animation before hiding loader
+        welcomeLoader.style.animation = 'loaderComplete 1s ease-in-out forwards';
+        
+        setTimeout(() => {
+            welcomeLoader.classList.add('fade-out');
+            
+            // Remove loader from DOM after fade out
+            setTimeout(() => {
+                welcomeLoader.remove();
+                
+                // Trigger entrance animations for main content
+                triggerMainContentAnimations();
+            }, 800);
+        }, 500);
+    }
+    
+    function triggerMainContentAnimations() {
+        // Add entrance animation classes to main content
+        const mainContent = document.getElementById('main-content');
+        const navbar = document.getElementById('navbar');
+        
+        if (mainContent) {
+            mainContent.style.opacity = '0';
+            mainContent.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                mainContent.style.transition = 'all 1s ease-out';
+                mainContent.style.opacity = '1';
+                mainContent.style.transform = 'translateY(0)';
+            }, 100);
+        }
+        
+        if (navbar) {
+            navbar.style.opacity = '0';
+            navbar.style.transform = 'translateY(-100%)';
+            
+            setTimeout(() => {
+                navbar.style.transition = 'all 0.8s ease-out';
+                navbar.style.opacity = '1';
+                navbar.style.transform = 'translateY(0)';
+            }, 300);
+        }
+    }
+    
+    // Enhanced loading experience with dynamic messages
+    const loadingMessages = [
+        "Preparing construction site...",
+        "Loading building materials...",
+        "Setting up construction equipment...",
+        "Assembling professional team...",
+        "Reviewing building plans...",
+        "Quality checking processes...",
+        "Finalizing project details...",
+        "Ready to build excellence..."
+    ];
+    
+    const progressLabel = document.querySelector('.progress-label');
+    let messageIndex = 0;
+    
+    const messageInterval = setInterval(() => {
+        if (messageIndex < loadingMessages.length && progress < 100) {
+            progressLabel.textContent = loadingMessages[messageIndex];
+            messageIndex++;
+        } else if (progress >= 100) {
+            progressLabel.textContent = "Welcome to Ozin Group Limited!";
+            clearInterval(messageInterval);
+        }
+    }, 1000);
+    
+    // Add CSS animation for loader complete
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes loaderComplete {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(1.1); opacity: 0.7; }
+        }
+        
+        #main-content {
+            opacity: 0;
+        }
+        
+        #navbar {
+            opacity: 0;
+        }
+    `;
+    document.head.appendChild(style);
 }
 
 // ===== NAVIGATION =====

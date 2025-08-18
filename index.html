@@ -24,9 +24,129 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader"></div>
+    <!-- Creative Construction Loading Page -->
+    <div class="welcome-loader" id="welcome-loader">
+        <div class="construction-scene">
+            <!-- Background City Skyline -->
+            <div class="skyline">
+                <div class="building building-1"></div>
+                <div class="building building-2"></div>
+                <div class="building building-3"></div>
+                <div class="building building-4"></div>
+                <div class="building building-5"></div>
+            </div>
+            
+            <!-- Construction Crane -->
+            <div class="crane-container">
+                <div class="crane">
+                    <div class="crane-base"></div>
+                    <div class="crane-mast"></div>
+                    <div class="crane-jib">
+                        <div class="crane-trolley">
+                            <div class="crane-hook"></div>
+                            <div class="building-block"></div>
+                        </div>
+                    </div>
+                    <div class="crane-counter-jib"></div>
+                </div>
+            </div>
+            
+            <!-- Ground Construction Site -->
+            <div class="construction-ground">
+                <div class="foundation"></div>
+                <div class="construction-workers">
+                    <div class="worker worker-1">
+                        <div class="worker-body"></div>
+                        <div class="hard-hat"></div>
+                    </div>
+                    <div class="worker worker-2">
+                        <div class="worker-body"></div>
+                        <div class="hard-hat"></div>
+                    </div>
+                </div>
+                
+                <!-- Construction Equipment -->
+                <div class="equipment">
+                    <div class="excavator">
+                        <div class="excavator-body"></div>
+                        <div class="excavator-arm"></div>
+                        <div class="excavator-bucket"></div>
+                        <div class="excavator-tracks"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floating Construction Elements -->
+            <div class="floating-elements">
+                <div class="blueprint floating-element" style="--delay: 0s;"></div>
+                <div class="hammer floating-element" style="--delay: 0.5s;"></div>
+                <div class="helmet floating-element" style="--delay: 1s;"></div>
+                <div class="gear floating-element" style="--delay: 1.5s;"></div>
+                <div class="ruler floating-element" style="--delay: 2s;"></div>
+            </div>
+            
+            <!-- Progress Bar with Construction Theme -->
+            <div class="construction-progress">
+                <div class="progress-label">Building Excellence...</div>
+                <div class="progress-container">
+                    <div class="progress-track"></div>
+                    <div class="progress-fill" id="progress-fill"></div>
+                    <div class="progress-truck">
+                        <div class="truck-body"></div>
+                        <div class="truck-wheels">
+                            <div class="wheel"></div>
+                            <div class="wheel"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-text">
+                    <span id="progress-percentage">0</span>% Complete
+                </div>
+            </div>
+            
+            <!-- Company Branding -->
+            <div class="loader-branding">
+                <div class="company-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Ozin Group Limited</h1>
+                        <p>Building Excellence in Tanzania</p>
+                    </div>
+                </div>
+                
+                <!-- Animated Text Highlights -->
+                <div class="feature-highlights">
+                    <div class="highlight-item active" data-text="Class 3 Licensed Contractor">
+                        <i class="fas fa-certificate"></i>
+                        <span>Class 3 Licensed Contractor</span>
+                    </div>
+                    <div class="highlight-item" data-text="Professional Excellence Since 2024">
+                        <i class="fas fa-award"></i>
+                        <span>Professional Excellence Since 2024</span>
+                    </div>
+                    <div class="highlight-item" data-text="Quality Construction Solutions">
+                        <i class="fas fa-tools"></i>
+                        <span>Quality Construction Solutions</span>
+                    </div>
+                    <div class="highlight-item" data-text="Trusted in Dodoma & Beyond">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Trusted in Dodoma & Beyond</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Particle Effects -->
+            <div class="construction-particles">
+                <div class="particle" style="--delay: 0s; --duration: 3s;"></div>
+                <div class="particle" style="--delay: 0.5s; --duration: 4s;"></div>
+                <div class="particle" style="--delay: 1s; --duration: 3.5s;"></div>
+                <div class="particle" style="--delay: 1.5s; --duration: 4.5s;"></div>
+                <div class="particle" style="--delay: 2s; --duration: 3s;"></div>
+                <div class="particle" style="--delay: 2.5s; --duration: 4s;"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -316,7 +436,7 @@
                             </div>
                             <div>
                                 <h5>Phone</h5>
-                                <p>+255 XXX XXX XXX</p>
+                                <p>+255 743 010 010</p>
                             </div>
                         </div>
                         
@@ -417,7 +537,7 @@
                 <div class="footer-section">
                     <h4>Corporate Office</h4>
                     <p>P.O. BOX 913, Dodoma, Tanzania</p>
-                    <p>Phone: +255 XXX XXX XXX</p>
+                    <p>Phone: +255 743 010 010</p>
                     <p>Email: info@ozingroup.co.tz</p>
                     <p>Managing Director: Omary Chuguma</p>
                 </div>
