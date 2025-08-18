@@ -81,14 +81,15 @@
 /* ===== BACKGROUND SKYLINE ===== */
 .skyline {
     position: absolute;
-    bottom: 20%;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 300px;
+    height: 50vh;
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
-    opacity: 0.3;
+    opacity: 0.25;
+    z-index: 1;
 }
 
 .building {
@@ -98,32 +99,32 @@
 }
 
 .building-1 {
-    width: 80px;
-    height: 200px;
+    width: 120px;
+    height: 35vh;
     animation-delay: 0s;
 }
 
 .building-2 {
-    width: 100px;
-    height: 250px;
+    width: 140px;
+    height: 45vh;
     animation-delay: 0.5s;
 }
 
 .building-3 {
-    width: 90px;
-    height: 180px;
+    width: 110px;
+    height: 30vh;
     animation-delay: 1s;
 }
 
 .building-4 {
-    width: 110px;
-    height: 220px;
+    width: 150px;
+    height: 40vh;
     animation-delay: 1.5s;
 }
 
 .building-5 {
-    width: 85px;
-    height: 190px;
+    width: 125px;
+    height: 35vh;
     animation-delay: 2s;
 }
 
@@ -281,10 +282,10 @@
 /* ===== CONSTRUCTION GROUND & WORKERS ===== */
 .construction-ground {
     position: absolute;
-    bottom: 15%;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 120px;
     background: linear-gradient(180deg, 
         rgba(55, 65, 81, 0.4) 0%, 
         rgba(31, 41, 55, 0.6) 50%, 
@@ -292,7 +293,8 @@
     );
     border-radius: 20px 20px 0 0;
     backdrop-filter: blur(2px);
-    opacity: 0.7;
+    opacity: 0.6;
+    z-index: 2;
 }
 
 .foundation {
@@ -522,7 +524,7 @@
 /* ===== CONSTRUCTION PROGRESS BAR ===== */
 .construction-progress {
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
@@ -645,7 +647,7 @@
 /* ===== COMPANY BRANDING ===== */
 .loader-branding {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -814,7 +816,7 @@
     
     .loader-branding {
         padding: 0 var(--space-md);
-        top: 35%;
+        top: 50%;
         width: 95%;
     }
     
@@ -858,7 +860,7 @@
 
 @media (max-width: 480px) {
     .loader-branding {
-        top: 30%;
+        top: 50%;
         width: 98%;
     }
     
@@ -906,12 +908,12 @@
     }
     
     .skyline {
-        height: 200px;
+        height: 40vh;
     }
     
     .building {
         width: 60px !important;
-        height: 120px !important;
+        height: 25vh !important;
     }
 }
 
