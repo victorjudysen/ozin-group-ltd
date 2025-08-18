@@ -547,24 +547,11 @@
     position: relative;
     width: 100%;
     height: 14px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 7px;
     overflow: hidden;
     margin-bottom: var(--space-sm);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.progress-track {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0.2) 50%,
-        rgba(255, 255, 255, 0.1) 100%
-    );
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .progress-fill {
@@ -647,22 +634,26 @@
 /* ===== COMPANY BRANDING ===== */
 .loader-branding {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 10;
     width: 90%;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .company-logo {
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-sm);
     animation: logoFloat 4s ease-in-out infinite;
 }
 
 .logo-icon {
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
 }
 
 .logo-icon i {
@@ -693,29 +684,29 @@
 .feature-highlights {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
-    max-width: 380px;
-    margin: 0 auto;
+    gap: 4px;
+    max-width: 320px;
+    margin: var(--space-sm) auto 0;
     padding: 0 var(--space-sm);
 }
 
 .highlight-item {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-xs) var(--space-sm);
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
+    gap: var(--space-xs);
+    padding: 6px var(--space-xs);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
     color: var(--text-light);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     font-weight: 500;
-    opacity: 0.5;
-    transform: translateX(-15px);
+    opacity: 0.4;
+    transform: translateX(-10px);
     transition: all 0.4s ease;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    min-height: 40px;
+    min-height: 32px;
 }
 
 .highlight-item.active {
@@ -816,7 +807,7 @@
     
     .loader-branding {
         padding: 0 var(--space-md);
-        top: 50%;
+        top: 45%;
         width: 95%;
     }
     
@@ -860,7 +851,7 @@
 
 @media (max-width: 480px) {
     .loader-branding {
-        top: 50%;
+        top: 45%;
         width: 98%;
     }
     
