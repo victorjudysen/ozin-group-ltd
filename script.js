@@ -353,36 +353,12 @@ function staggerAnimations(selector, delay) {
 
 // ===== TYPING EFFECT =====
 function initTypingEffect() {
+    // Typewriter effect disabled - keeping title static
     const heroTitle = document.querySelector('.hero h1');
     if (!heroTitle) return;
-
-    const text = heroTitle.textContent;
-    heroTitle.textContent = '';
-    heroTitle.style.opacity = '1';
-
-    let i = 0;
-    const typeWriter = () => {
-        if (i < text.length) {
-            heroTitle.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        } else {
-            // Add blinking cursor effect
-            const cursor = document.createElement('span');
-            cursor.textContent = '|';
-            cursor.style.animation = 'blink 1s infinite';
-            cursor.style.marginLeft = '5px';
-            heroTitle.appendChild(cursor);
-            
-            // Remove cursor after 3 seconds
-            setTimeout(() => {
-                cursor.remove();
-            }, 3000);
-        }
-    };
     
-    // Start typing after preloader
-    setTimeout(typeWriter, 1500);
+    // Just ensure the title is visible without any typing animation
+    heroTitle.style.opacity = '1';
 }
 
 // ===== FLOATING ELEMENTS =====
