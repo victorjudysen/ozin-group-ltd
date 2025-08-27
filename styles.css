@@ -562,6 +562,16 @@
     margin-bottom: var(--space-sm);
 }
 
+/* Ensure no background track appears behind progress bar */
+.progress-fill::before {
+    display: none;
+}
+
+.construction-progress::before,
+.construction-progress::after {
+    display: none;
+}
+
 .progress-truck {
     position: absolute;
     top: -2px; /* Position truck to ride ON the bar instead of above it */
