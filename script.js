@@ -5,29 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeApp() {
     // Initialize all components
-    initPreloader();
-    initNavigation();
-    initScrollEffects();
-    initAnimations();
-    initParallax();
-    initCounters();
-    initContactForm();
-    initScrollToTop();
-    initCursor();
-    
-    // Start reveal animations after a short delay
-    setTimeout(() => {
-        revealElements();
-    }, 500);
-}
-
-// ===== MAIN APPLICATION INITIALIZATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-});
-
-function initializeApp() {
-    // Initialize all components
     initWelcomeLoader();
     initNavigation();
     initScrollEffects();
@@ -210,18 +187,39 @@ function initNavigation() {
     }, 10));
 
     // Mobile menu toggle with improved animations
-    mobileToggle.addEventListener('click', function() {
+    const mobileBreadcrumb = document.getElementById('mobile-breadcrumb');
+    mobileToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         navMenu.classList.toggle('active');
+        if (mobileBreadcrumb) mobileBreadcrumb.classList.toggle('active');
         const icon = mobileToggle.querySelector('i');
-        
+        if (icon) {
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth > 768) return;
         if (navMenu.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-            icon.style.transform = 'rotate(180deg)';
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-            icon.style.transform = 'rotate(0deg)';
+            if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                if (mobileBreadcrumb) mobileBreadcrumb.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            }
         }
     });
 
@@ -229,10 +227,13 @@ function initNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
+            if (mobileBreadcrumb) mobileBreadcrumb.classList.remove('active');
             const icon = mobileToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-            icon.style.transform = 'rotate(0deg)';
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                icon.style.transform = 'rotate(0deg)';
+            }
         });
     });
 

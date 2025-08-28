@@ -1,3 +1,51 @@
+/* ===== MOBILE NAV OVERLAY & BREADCRUMB ===== */
+@media (max-width: 768px) {
+    .mobile-breadcrumb {
+        display: none;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        background: var(--primary-color);
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 1rem 2rem 0.5rem 2rem;
+        z-index: 1002;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        letter-spacing: 0.04em;
+    }
+    .nav-menu.active ~ #mobile-breadcrumb,
+    #mobile-breadcrumb.active {
+        display: block;
+    }
+    .nav-menu {
+        display: none !important;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 54, 93, 0.98);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 2.5rem 0 1rem 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        z-index: 1001;
+    }
+    .nav-menu.active {
+        display: flex !important;
+    }
+    .mobile-menu-toggle {
+        display: block !important;
+    }
+    .nav-link {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: var(--font-size-lg);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+}
 /* ===== CSS RESET & BASE STYLES ===== */
 * {
     margin: 0;
@@ -2096,4 +2144,53 @@ p {
 ::-moz-selection {
     background: var(--accent-color);
     color: white;
+}
+
+/* ===== MOBILE NAV MENU OVERRIDE (ALWAYS LAST) ===== */
+@media (max-width: 768px) {
+  .mobile-breadcrumb {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1rem 2rem 0.5rem 2rem;
+    z-index: 1002;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    letter-spacing: 0.04em;
+  }
+  .nav-menu.active ~ #mobile-breadcrumb,
+  #mobile-breadcrumb.active {
+    display: block;
+  }
+  .nav-menu {
+    display: none !important;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    background: rgba(26, 54, 93, 0.98);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 2.5rem 0 1rem 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    z-index: 1001;
+  }
+  .nav-menu.active {
+    display: flex !important;
+  }
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+  .nav-link {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: var(--font-size-lg);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
 }
