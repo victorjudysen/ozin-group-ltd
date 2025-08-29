@@ -648,40 +648,25 @@ function initScrollToTop() {
 // ===== CUSTOM CURSOR =====
 function initCursor() {
     if (window.innerWidth <= 768) return; // Skip on mobile
-    
+
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     document.body.appendChild(cursor);
-    
-    Object.assign(cursor.style, {
-        position: 'fixed',
-        width: '20px',
-        height: '20px',
-        background: 'var(--accent-color)',
-        borderRadius: '50%',
-        pointerEvents: 'none',
-        zIndex: '9999',
-        transform: 'translate(-50%, -50%)',
-        transition: 'transform 0.1s ease',
-        opacity: '0.7'
-    });
-    
+
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-    
+
     // Enhance cursor on hover
-    const hoverElements = document.querySelectorAll('a, button, .service-card, .project-card');
+    const hoverElements = document.querySelectorAll('a, button, .service-card, .project-card, .credential-card, .stat-card');
     hoverElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            cursor.style.opacity = '1';
+            cursor.classList.add('hover');
         });
-        
+
         element.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursor.style.opacity = '0.7';
+            cursor.classList.remove('hover');
         });
     });
 }
