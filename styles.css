@@ -2134,18 +2134,6 @@ p {
     /* Custom cursor provides additional visual feedback */
 }
 
-/* Hide default cursor on desktop */
-@media (min-width: 769px) {
-    * {
-        cursor: none !important;
-    }
-
-    /* Keep pointer cursor for interactive elements */
-    a, button, input, textarea, select {
-        cursor: pointer !important;
-    }
-}
-
 /* ===== MOBILE NAV MENU OVERRIDE (ALWAYS LAST) ===== */
 @media (max-width: 768px) {
   /* Mobile menu backdrop to prevent interaction with content behind */
