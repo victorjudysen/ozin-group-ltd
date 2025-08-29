@@ -192,6 +192,14 @@ function initNavigation() {
         e.stopPropagation();
         navMenu.classList.toggle('active');
         if (mobileBreadcrumb) mobileBreadcrumb.classList.toggle('active');
+
+        // Prevent body scroll when menu is open
+        if (navMenu.classList.contains('active')) {
+            document.body.classList.add('menu-open');
+        } else {
+            document.body.classList.remove('menu-open');
+        }
+
         const icon = mobileToggle.querySelector('i');
         if (icon) {
             if (navMenu.classList.contains('active')) {
@@ -213,6 +221,8 @@ function initNavigation() {
             if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
                 if (mobileBreadcrumb) mobileBreadcrumb.classList.remove('active');
+                document.body.classList.remove('menu-open'); // Remove body scroll prevention
+
                 const icon = mobileToggle.querySelector('i');
                 if (icon) {
                     icon.classList.remove('fa-times');
@@ -228,6 +238,8 @@ function initNavigation() {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
             if (mobileBreadcrumb) mobileBreadcrumb.classList.remove('active');
+            document.body.classList.remove('menu-open'); // Remove body scroll prevention
+
             const icon = mobileToggle.querySelector('i');
             if (icon) {
                 icon.classList.remove('fa-times');
@@ -765,9 +777,10 @@ function initAccessibility() {
         if (e.key === 'Escape') {
             const navMenu = document.getElementById('nav-menu');
             const mobileToggle = document.getElementById('mobile-toggle');
-            
+
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
+                document.body.classList.remove('menu-open'); // Remove body scroll prevention
                 const icon = mobileToggle.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
