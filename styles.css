@@ -2111,24 +2111,27 @@ p {
 /* ===== CUSTOM CURSOR ===== */
 .custom-cursor {
     position: fixed;
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
     background: var(--accent-color);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 10000; /* Above mobile menu */
+    z-index: 10000;
     transform: translate(-50%, -50%);
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.7;
-    mix-blend-mode: difference;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 10px rgba(214, 158, 46, 0.3);
+    transition: all 0.08s ease;
+    opacity: 0.8;
 }
 
 .custom-cursor.hover {
+    width: 24px;
+    height: 24px;
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.5);
-    box-shadow: 0 0 20px rgba(214, 158, 46, 0.6);
+}
+
+/* Keep default cursor visible on desktop - both cursors will be shown */
+@media (min-width: 769px) {
+    /* Default cursor remains visible */
+    /* Custom cursor provides additional visual feedback */
 }
 
 /* Hide default cursor on desktop */

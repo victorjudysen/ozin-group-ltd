@@ -658,8 +658,8 @@ function initCursor() {
         cursor.style.top = e.clientY + 'px';
     });
 
-    // Enhance cursor on hover
-    const hoverElements = document.querySelectorAll('a, button, .service-card, .project-card, .credential-card, .stat-card');
+    // Simple hover detection for links and buttons
+    const hoverElements = document.querySelectorAll('a, button');
     hoverElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
             cursor.classList.add('hover');
@@ -669,9 +669,7 @@ function initCursor() {
             cursor.classList.remove('hover');
         });
     });
-}
-
-// ===== MOUSE PARALLAX EFFECT =====
+}// ===== MOUSE PARALLAX EFFECT =====
 function initMouseParallax() {
     const parallaxElements = document.querySelectorAll('.service-icon, .credential-icon');
     
