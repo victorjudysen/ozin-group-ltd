@@ -2134,7 +2134,8 @@ p {
     z-index: -1;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInBackdrop 0.3s ease-out;
   }
 
   .nav-menu.active::before {
@@ -2183,11 +2184,22 @@ p {
     box-shadow: 0 8px 32px rgba(0,0,0,0.15);
     z-index: 1002;
     border-top: 1px solid rgba(255,255,255,0.05);
-    animation: slideDown 0.3s ease-out;
+    transform: translateY(-100%) scale(0.95);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .nav-menu.active {
     display: flex !important;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  /* Hide menu items initially */
+  .nav-menu:not(.active) .nav-link {
+    animation: none;
+    opacity: 0;
+    transform: translateX(-30px);
   }
 
   /* Mobile menu toggle button */
@@ -2202,7 +2214,7 @@ p {
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 4px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .mobile-menu-toggle:hover {
@@ -2212,6 +2224,17 @@ p {
 
   .mobile-menu-toggle:active {
     transform: scale(0.95);
+    animation: buttonPress 0.1s ease-out;
+  }
+
+  /* Hamburger icon animation */
+  .mobile-menu-toggle i {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+  }
+
+  .nav-menu.active ~ .mobile-menu-toggle i {
+    animation: iconRotate 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   /* Navigation links styling */
@@ -2222,21 +2245,33 @@ p {
     color: rgba(255, 255, 255, 0.9) !important;
     text-decoration: none;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     display: block;
+    transform: translateX(-30px);
+    opacity: 0;
+    animation: slideInItem 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
+
+  /* Staggered animation delays for menu items */
+  .nav-menu li:nth-child(1) .nav-link { animation-delay: 0.1s; }
+  .nav-menu li:nth-child(2) .nav-link { animation-delay: 0.15s; }
+  .nav-menu li:nth-child(3) .nav-link { animation-delay: 0.2s; }
+  .nav-menu li:nth-child(4) .nav-link { animation-delay: 0.25s; }
+  .nav-menu li:nth-child(5) .nav-link { animation-delay: 0.3s; }
+  .nav-menu li:nth-child(6) .nav-link { animation-delay: 0.35s; }
 
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.05);
     color: #fff !important;
     padding-left: 2.5rem;
     border-left: 3px solid var(--accent-color);
+    transform: translateX(0) scale(1.02);
   }
 
   .nav-link:active {
     background: rgba(255, 255, 255, 0.1);
-    transform: scale(0.98);
+    transform: translateX(0) scale(0.98);
   }
 
   /* Prevent body scroll when menu is open */
@@ -2251,12 +2286,52 @@ p {
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-100%) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
+}
+
+/* Individual menu item slide-in animation */
+@keyframes slideInItem {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Enhanced backdrop animation */
+.nav-menu::before {
+  animation: fadeInBackdrop 0.3s ease-out;
+}
+
+@keyframes fadeInBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Button press animation */
+@keyframes buttonPress {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(0.95); }
+}
+
+/* Icon rotation animation */
+@keyframes iconRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(180deg) scale(1); }
 }
 
 /* Ensure navbar stays above mobile menu */
